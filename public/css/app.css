@@ -48247,3 +48247,8 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
+.router-link-active {
+  background-color: #1e7ba7;
+  color: #fff important;
+}
+
