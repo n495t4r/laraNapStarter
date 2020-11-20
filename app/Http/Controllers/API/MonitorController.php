@@ -27,12 +27,11 @@ class MonitorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'filfirse' => 'required|mimes:csv,txt',
             'first_name'=> 'required|string|max:70',
             'middle_name'=> 'string|max:70',
             'last_name'=> 'required|string|max:70',
-            'phone'=> 'required|string|phone|unique:monitors|max:11',
-            'alt_phone'=> 'phone|max:11',
+            'phone'=> 'required|string|unique:monitors|max:11',
+            'alt_phone'=> 'max:11',
             'email'=> 'required|string|email|unique:monitors',
             'gender'=> 'required', 
             'dob'=> 'required|date',
