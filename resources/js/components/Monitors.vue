@@ -18,16 +18,18 @@
                       <th>ID</th>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Type</th>
+                      <th>State of Origin</th>
+                      <th>Registered at</th>
                       <th>Modify</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>johndoe@example.com</td>
-                      <td><span class="tag tag-success">Admin</span></td>
+                    <tr v-for="monitor in monitors" :key="monitor.id">
+                      <td>{{monitor.id}}</td>
+                      <td>{{monitor.first_name}}</td>
+                      <td>{{monitor.email}}</td>
+                      <td>{{monitor.origin}}</td>
+                      <td>{{monitor.created_at}}</td>
                       <td>
                           <a href="#">
                               <i class="fa fa-edit blue"></i>
@@ -191,9 +193,10 @@
 
 <script>
     export default {
+       
         data () {
             return {
-            // Create a new form instance
+                monitors: {},
                 form: new Form({
                     first_name: '',
                     middle_name: '',
@@ -224,14 +227,19 @@
             }
         },
          methods: {
+
+            loadMonitors(){
+                axios.get("api/monitor").then(({data}) => (this.monitors = data.data));
+            },
+
             createMonitor () {
             // Submit the form via a POST request
             this.form.post('api/monitor')
                 // .then(({ data }) => { console.log(data) })
             }
         },
-        mounted() {
-            console.log('Component mounted.')
+        created() {
+            this.loadMonitors();
         }
     }
 </script>

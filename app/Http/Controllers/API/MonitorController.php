@@ -15,7 +15,7 @@ class MonitorController extends Controller
      */
     public function index()
     {
-        //
+        return Monitor::latest()->paginate(10);
     }
 
     /**
@@ -28,14 +28,12 @@ class MonitorController extends Controller
     {
         $request->validate([
             'first_name'=> 'required|string|max:70',
-            'middle_name'=> 'string|max:70',
             'last_name'=> 'required|string|max:70',
             'phone'=> 'required|string|unique:monitors|max:11',
             'alt_phone'=> 'max:11',
             'email'=> 'required|string|email|unique:monitors',
             'gender'=> 'required', 
-            'dob'=> 'required|date',
-           
+            'dob'=> 'required|date',  
             'origin'=> 'required',
             'lga_origin'=> 'required',
             'residence'=> 'required',
