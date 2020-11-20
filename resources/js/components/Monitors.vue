@@ -235,6 +235,7 @@
             createMonitor () {
               this.$Progress.start();
                 this.form.post('api/monitor');
+                Fire.$emit("Created");
                 $("#addNew").modal("hide");
                 Toast.fire({
                     icon: 'success',
@@ -245,6 +246,9 @@
         },
         created() {
             this.loadMonitors();
+            Fire.$on('Created', ()=> {
+                this.loadMonitors();
+            });
         }
     }
 </script>

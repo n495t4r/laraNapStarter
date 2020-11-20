@@ -54,6 +54,7 @@ const routes = [
   });
 
   window.Toast = Toast;
+  window.Fire = new Vue();
 
   //global functions
   Vue.filter('toUpper', function(the_text){

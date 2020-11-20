@@ -2229,6 +2229,7 @@ __webpack_require__.r(__webpack_exports__);
     createMonitor: function createMonitor() {
       this.$Progress.start();
       this.form.post('api/monitor');
+      Fire.$emit("Created");
       $("#addNew").modal("hide");
       Toast.fire({
         icon: 'success',
@@ -2238,7 +2239,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this2 = this;
+
     this.loadMonitors();
+    Fire.$on('Created', function () {
+      _this2.loadMonitors();
+    });
   }
 });
 
@@ -2428,6 +2434,7 @@ __webpack_require__.r(__webpack_exports__);
     createUser: function createUser() {
       this.$Progress.start();
       this.form.post('api/user');
+      Fire.$emit("Created");
       $("#addNew").modal("hide");
       Toast.fire({
         icon: 'success',
@@ -2437,7 +2444,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this2 = this;
+
     this.loadUsers();
+    Fire.$on('Created', function () {
+      _this2.loadUsers();
+    }); // setInterval(()=> this.loadUsers(), 3000);
   }
 });
 
@@ -80879,7 +80891,8 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.mixin({
     toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.resumeTimer);
   }
 });
-window.Toast = Toast; //global functions
+window.Toast = Toast;
+window.Fire = new Vue(); //global functions
 
 Vue.filter('toUpper', function (the_text) {
   if (!the_text) return '';
