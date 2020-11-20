@@ -26,10 +26,10 @@
                   <tbody>
                     <tr v-for="monitor in monitors" :key="monitor.id">
                       <td>{{monitor.id}}</td>
-                      <td>{{monitor.first_name}}</td>
+                      <td>{{monitor.first_name | toUpper}}</td>
                       <td>{{monitor.email}}</td>
                       <td>{{monitor.origin}}</td>
-                      <td>{{monitor.created_at}}</td>
+                      <td>{{monitor.created_at | the_date}}</td>
                       <td>
                           <a href="#">
                               <i class="fa fa-edit blue"></i>
@@ -233,9 +233,14 @@
             },
 
             createMonitor () {
-            // Submit the form via a POST request
-            this.form.post('api/monitor')
-                // .then(({ data }) => { console.log(data) })
+              this.$Progress.start();
+                this.form.post('api/monitor');
+                $("#addNew").modal("hide");
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Monitor created successfully'
+                });
+                this.$Progress.finish();
             }
         },
         created() {

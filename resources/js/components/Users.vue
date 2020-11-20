@@ -29,8 +29,8 @@
                       <td>{{user.id}}</td>
                       <td>{{user.name}}</td>
                       <td>{{user.email}}</td>
-                      <td>{{user.type}}</td>
-                      <td>{{user.created_at}}</td>
+                      <td>{{user.type | toUpper}}</td>
+                      <td>{{user.created_at | the_date }}</td>
                       
                       <td>
                           <a href="#">
@@ -135,9 +135,14 @@
             },
 
             createUser () {
-            // Submit the form via a POST request
-            this.form.post('api/user')
-                // .then(({ data }) => { console.log(data) })
+                this.$Progress.start();
+                this.form.post('api/user');
+                $("#addNew").modal("hide");
+                Toast.fire({
+                    icon: 'success',
+                    title: 'User created successfully'
+                });
+                this.$Progress.finish();
             }
         },
         created() {
