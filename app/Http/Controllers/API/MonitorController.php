@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Monitor;
 
-class UsersController extends Controller
+class MonitorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,12 +27,27 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=> 'required|string|max:191',
-            'email'=> 'required|string|email|unique:users',
+            'filfirse' => 'required|mimes:csv,txt',
+            'first_name'=> 'required|string|max:70',
+            'middle_name'=> 'string|max:70',
+            'last_name'=> 'required|string|max:70',
+            'phone'=> 'required|string|phone|unique:monitors|max:11',
+            'alt_phone'=> 'phone|max:11',
+            'email'=> 'required|string|email|unique:monitors',
+            'gender'=> 'required', 
+            'dob'=> 'required|date',
+           
+            'origin'=> 'required',
+            'lga_origin'=> 'required',
+            'residence'=> 'required',
+            'lga_residence'=> 'required',
+            'marital_status'=> 'required',
+            'type'=> 'required',
             'password'=> 'required|string|min:6',
-        ]); 
+        
+        ]);
 
-        User::create($request->all());
+        Monitor::create($request->all());
     }
 
     /**

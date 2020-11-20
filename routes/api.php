@@ -22,4 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResources([
     'user' => App\Http\Controllers\API\UsersController::class,
+    'monitor' => App\Http\Controllers\API\MonitorController::class,
 ]);
