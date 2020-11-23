@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 
-class Monitor extends Model
+class Monitor extends Authenticatable
 {
-    use HasFactory;
-
+    use HasFactory, Notifiable;
+   protected $guard = 'monitor';
     /**
      * The attributes that are mass assignable.
      *

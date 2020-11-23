@@ -40,7 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        // 'monitor' => [
+        //     'driver' => 'session',
+        //     'provider' => 'monitors',
+        // ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -70,7 +73,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        // 'monitors' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Monitor::class,
+        // ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

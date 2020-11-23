@@ -24,3 +24,5 @@ Route::apiResources([
     'user' => App\Http\Controllers\API\UsersController::class,
     'monitor' => App\Http\Controllers\API\MonitorController::class,
 ]);
+
+Route::get('/imsregister');
