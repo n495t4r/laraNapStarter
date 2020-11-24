@@ -45,7 +45,7 @@ return [
         //     'provider' => 'monitors',
         // ],
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
             'hash' => false,
         ],
