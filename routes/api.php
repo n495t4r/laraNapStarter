@@ -26,3 +26,5 @@ Route::apiResources([
 ]);
 
 Route::get('/imsregister');
+Route::get('profile', 'App\Http\Controllers\API\UsersController@profile');
+Route::put('profile', 'App\Http\Controllers\API\UsersController@updateProfile');

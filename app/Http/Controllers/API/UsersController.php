@@ -55,6 +55,17 @@ class UsersController extends Controller
     {
         //
     }
+    public function updateProfile(Request $request)
+    {
+        $user = auth('api')->User();
+
+        return $request->photo;
+    }
+
+    public function profile()
+    {
+        return auth('api')->User();
+    }
 
     /**
      * Update the specified resource in storage.
